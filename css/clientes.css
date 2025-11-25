@@ -1,0 +1,210 @@
+/* === VARIABLES Y BASE === */
+:root{
+  --bg1: #0b0216;
+  --bg2: #2b063f;
+  --accent1: #a855f7;
+  --accent2: #7c3aed;
+  --glass: rgba(255,255,255,0.06);
+  --glass-strong: rgba(255,255,255,0.12);
+  --text: #eef2ff;
+}
+
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  font-family:Inter, Poppins, system-ui, sans-serif;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.22), transparent 10%),
+              radial-gradient(900px 500px at 90% 80%, rgba(168,85,247,0.14), transparent 10%),
+              linear-gradient(180deg,var(--bg1),var(--bg2) 60%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  width: 100%;
+  padding: 18px 40px;
+  background: rgba(15, 15, 15, 0.75);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* nav */
+.nav {
+  display: flex;
+  gap: 22px;
+}
+
+.nav a {
+  color: #d6d6d6;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: 0.25s ease-in-out;
+}
+
+.nav a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.nav a.active {
+  background: #4f8cff;
+  color: white;
+  box-shadow: 0 0 12px rgba(79,140,255,0.6);
+}
+
+/* ===== CONTENEDOR GENERAL ===== */
+.container{
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.title{
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin-bottom: 22px;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+}
+
+/* ===== CARD GENERAL ===== */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 40px rgba(2,1,8,0.6);
+  padding: 26px;
+  border-radius: 26px;
+  margin-bottom: 35px;
+  transition: .3s ease;
+}
+
+.card:hover{
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 28px 80px rgba(109,40,217,0.26);
+}
+
+/* ===== FORMULARIO ===== */
+.group{
+  display:flex;
+  flex-direction:column;
+  margin-bottom:20px;
+}
+
+.group label{
+  font-weight:600;
+  font-size:1rem;
+  margin-bottom:6px;
+}
+
+.group input{
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.05);
+  color:#fff;
+  outline:none;
+  font-size:1rem;
+  transition:.2s;
+}
+
+.group input:focus{
+  border-color:var(--accent1);
+  box-shadow:0 0 14px rgba(168,85,247,0.4);
+}
+
+/* ===== BOTÓN ===== */
+.btn-primary{
+  width:100%;
+  padding:12px 14px;
+  border-radius:999px;
+  border:0;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#fff;
+  font-weight:800;
+  font-size:1rem;
+  cursor:pointer;
+  box-shadow: 0 8px 28px rgba(99,102,241,0.18);
+  transition: transform .18s, box-shadow .18s;
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary:active{
+  transform:translateY(1px);
+}
+
+/* Mensaje debajo del botón */
+.msg{
+  margin-top:10px;
+  font-size:.95rem;
+  opacity:.85;
+}
+
+/* ===== SELECT ===== */
+select{
+  width:100%;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.05);
+  color:#fff;
+  outline:none;
+  font-size:1rem;
+  margin-top:10px;
+}
+
+/* ===== TABLA ===== */
+.table-wrapper{
+  overflow-x:auto;
+  backdrop-filter:blur(6px);
+  border-radius:20px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  color:#fff;
+}
+
+thead{
+  background:rgba(255,255,255,0.1);
+}
+
+th,td{
+  padding:14px 12px;
+  text-align:left;
+}
+
+tbody tr{
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+tbody tr:hover{
+  background:rgba(255,255,255,0.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .container{padding:10px;}
+  .title{font-size:1.8rem;}
+}
