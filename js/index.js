@@ -1,0 +1,40 @@
+function toggleRegister() {
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("register").classList.remove("hidden");
+}
+
+function login() {
+  const role = document.getElementById("role").value;
+  const name = document.getElementById("loginName").value;
+  const pass = document.getElementById("loginPass").value;
+
+  if (!role || !name || !pass) {
+    alert("Completa todos los campos.");
+    return;
+  }
+
+  if (role === "admin") {
+    window.location.href = "index-admin.html";
+  } else if (role === "cliente") {
+    window.location.href = "index-user.html";
+  }
+}
+
+function register() {
+  const role = document.getElementById("role").value;
+  const name = document.getElementById("regName").value;
+  const email = document.getElementById("regEmail").value;
+  const phone = document.getElementById("regPhone").value;
+  const pass = document.getElementById("regPass").value;
+
+  if (!role || !name || !email || !phone || !pass) {
+    alert("Completa todos los campos.");
+    return;
+  }
+
+  if (role === "admin") {
+    window.location.href = "index-admin.html";
+  } else if (role === "cliente") {
+    window.location.href = "index-user.html";
+  }
+}
