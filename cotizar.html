@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cotizar Servicio - TechFix</title>
+  <link rel="stylesheet" href="cotizar.css">
+  <script src="cotizar.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header small">
+    <div class="logo"><div class="logo-dot"></div><span>TechFix</span></div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="clientes.html">Registrar Cliente</a>
+      <a href="cotizar.html" class="active">Cotizar</a>
+      <a href="cotizaciones.html" class="ghost">Listado</a>
+    </nav>
+  </header>
+
+  <main class="container narrow">
+    <h2 class="page-title">Crear Cotización</h2>
+
+    <!-- FORMULARIO PRINCIPAL -->
+    <form id="formCotizacion" class="card-form">
+
+      <label>Nombre del Cliente</label>
+      <input type="text" id="clienteInput" placeholder="Ej: Jorge Ramon" required>
+
+      <button id="btnBuscarCliente" type="button" class="btn-primary">Verificar Cliente</button>
+
+      <div id="clienteValido" hidden>
+        <label>Fecha de Cotización</label>
+        <input type="date" id="fechaCotizacion" required>
+
+        <label>Servicio</label>
+        <select id="servicioSelect"></select>
+
+        <label>Cantidad</label>
+        <input id="cantidad" type="number" min="1" value="1">
+
+        <button id="btnAgregar" type="button" class="btn-primary">Agregar Servicio</button>
+
+        <!-- Lista de servicios agregados -->
+        <div class="servicios-lista" id="listaServicios"></div>
+
+        <button type="submit" class="btn-primary">Generar Cotización</button>
+      </div>
+    </form>
+
+    <!-- RESULTADO / FACTURA -->
+    <div id="resultadoCot" class="cot-result card-form" hidden></div>
+
+  </main>
+</body>
+</html>
