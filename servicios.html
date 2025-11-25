@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Servicios - TechFix</title>
+  <link rel="stylesheet" href="servicios.css">
+  <script src="servicios.js" defer></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="logo"><div class="logo-dot"></div><span>TechFix</span></div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html" class="active">Servicios</a>
+      <a href="clientes.html">Registrar Cliente</a>
+      <a href="cotizar.html">Cotizar</a>
+      <a href="cotizaciones.html" class="ghost">Listado</a>
+    </nav>
+  </header>
+
+  <main class="pricing-hero">
+    <!-- fondo hero (usa tu imagen subida - la ruta local ya está puesta) -->
+    <div class="hero-overlay"></div>
+
+    <section class="pricing-container">
+      <div class="hero-text">
+        <h1>Servicios disponibles para nuestros clientes</h1>
+        <p class="lead">No esperes a que ocurra un problema; actúa hoy y protege tu inversión tecnológica</p>
+
+
+      <div class="controls">
+        <div class="toggle-group" role="tablist" aria-label="Categorias servicios">
+          <button class="toggle active" data-type="pc">PC</button>
+          <button class="toggle" data-type="laptop">Laptop</button>
+          <button class="toggle" data-type="network">Redes</button>
+        </div>
+
+        <div class="search-wrap">
+          <input id="search" type="search" placeholder="Buscar servicio..." />
+        </div>
+      </div>
+
+      <div class="cards" id="servicesGrid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© TechFix - Servicios Técnicos</p>
+  </footer>
+</body>
+</html>
