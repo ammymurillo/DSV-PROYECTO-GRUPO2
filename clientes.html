@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Registrar Cliente - TechFix</title>
+  <link rel="stylesheet" href="clientes.css">
+  <script src="clientes.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="logo"><span>TechFix</span></div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="clientes.html" class="active">Registrar Cliente</a>
+      <a href="cotizar.html">Cotizar</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="title">Registrar Cliente</h1>
+
+    <!-- TARJETA FORMULARIO -->
+    <form id="formCliente" class="card">
+      <div class="group">
+        <label>Nombre</label>
+        <input id="nombre" type="text" required>
+      </div>
+
+      <div class="group">
+        <label>Email</label>
+        <input id="email" type="email" required>
+      </div>
+
+      <div class="group">
+        <label>Teléfono</label>
+        <input id="telefono" type="tel" required>
+      </div>
+
+      <button type="submit" class="btn-primary">Registrar Cliente</button>
+      <p id="msgCliente" class="msg"></p>
+    </form>
+    
+    <!-- TABLA CLIENTES -->
+    <section>
+      <h3>Clientes Registrados</h3>
+      <div class="table-wrapper">
+        <table id="tablaClientes">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
