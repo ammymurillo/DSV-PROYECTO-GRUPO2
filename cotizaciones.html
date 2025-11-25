@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Listado de Cotizaciones - TechFix</title>
+  <link rel="stylesheet" href="cotizaciones.css">
+  <script src="cotizaciones.js" defer></script>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="logo"><div class="logo-dot"></div><span>TechFix</span></div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="clientes.html">Registrar Cliente</a>
+      <a href="cotizar.html">Cotizar</a>
+      <a href="cotizaciones.html" class="ghost">Listado</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2 class="page-title">Listado de Cotizaciones</h2>
+
+    <div class="filter-row card-form">
+      <label>Filtrar por cliente</label>
+      <select id="filtroCliente">
+        <option value="">Todos</option>
+      </select>
+
+      <label>Desde</label>
+      <input id="filtroDesde" type="date">
+
+      <label>Hasta</label>
+      <input id="filtroHasta" type="date">
+
+      <button id="btnFiltrar" class="btn-ghost">Aplicar filtro</button>
+      <button id="btnLimpiarFiltro" class="btn-outline">Limpiar</button>
+      <button id="btnCSV" class="btn-primary">Exportar CSV</button>
+    </div>
+
+    <table class="table" id="tablaCotizaciones">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Subtotal (USD)</th>
+          <th>Impuesto</th>
+          <th>Total (USD)</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+</body>
+</html>
