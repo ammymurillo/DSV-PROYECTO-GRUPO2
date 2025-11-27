@@ -173,39 +173,7 @@ input, select{
   background: var(--glass-strong);
   color: var(--text);
 }
-select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.06); /* glass */
-  color: var(--text);
-  font-size: 15px;
-  backdrop-filter: blur(12px);
-  transition: 0.25s ease-in-out;
-  cursor: pointer;
-}
 
-/* Glow al enfocarse */
-select:focus {
-  outline: none;
-  border-color: var(--accent1);
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6); /* glow morado */
-  transform: translateY(-2px);
-}
-
-/* Menú desplegable */
-select option {
-  background: rgba(16, 8, 28, 0.95); /* oscuro + glass */
-  backdrop-filter: blur(10px);
-  color: var(--text);
-  padding: 12px;
-}
-
-/* Hover del menú */
-select option:hover {
-  background: rgba(124, 58, 237, 0.45); /* morado suave */
-}
 /* =========================
       BOTONES
 ========================= */
