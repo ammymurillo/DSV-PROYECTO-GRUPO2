@@ -112,13 +112,17 @@ body{
 }
 
 /* =========================
-      CONTENEDOR COTIZAR
+   CONTENEDOR COTIZAR FIX
 ========================= */
 
 .cotizador-container{
+  max-width: 1200px;     /* evita que se haga gigante */
+  width: 90%;            /* que no use toda la pantalla */
+  margin: 40px auto;     /* centrado */
   display: flex;
   gap: 25px;
-  padding: 40px;
+  padding: 20px;
+  flex-wrap: wrap;       /* permite que se acomode en pantallas pequeñas */
 }
 
 .left-panel, .right-panel{
@@ -129,12 +133,32 @@ body{
   border-radius: 14px;
 }
 
+/* panel izquierdo compacto */
 .left-panel{
-  width: 35%;
+  flex: 1 1 300px;       /* mínimo 300px — ocupa solo lo necesario */
+  max-width: 380px;      /* evita que se haga muy ancho */
 }
 
+/* panel derecho ajustado */
 .right-panel{
-  width: 65%;
+  flex: 1 1 600px;
+  max-width: 780px;
+}
+
+/* =========================
+   RESPONSIVE PARA PANTALLAS CHICAS
+========================= */
+
+@media (max-width: 900px) {
+  .cotizador-container{
+    flex-direction: column;
+    width: 95%;
+    padding: 15px;
+  }
+
+  .left-panel, .right-panel{
+    max-width: 100%;
+  }
 }
 
 /* =========================
