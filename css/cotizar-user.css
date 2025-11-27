@@ -1,67 +1,88 @@
-.cotizador-container {
+:root{
+  --bg1: #0b0216;
+  --bg2: #2b063f;
+  --accent1: #a855f7;
+  --accent2: #7c3aed;
+  --glass: rgba(255,255,255,0.06);
+  --glass-strong: rgba(255,255,255,0.12);
+  --text: #eef2ff;
+}
+
+body{
+  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+  color: var(--text);
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.cotizador-container{
   display: flex;
-  gap: 30px;
-  padding: 30px;
+  gap: 25px;
+  padding: 40px;
 }
 
-.left-panel, .right-panel {
-  background: #111;
-  color: white;
+.left-panel, .right-panel{
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-strong);
   padding: 25px;
-  border-radius: 20px;
-  width: 50%;
+  border-radius: 14px;
 }
 
-.left-panel input, .left-panel select {
+.left-panel{
+  width: 35%;
+}
+
+.right-panel{
+  width: 65%;
+}
+
+input, select{
   width: 100%;
   padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  background: #222;
-  border: none;
-  color: white;
-}
-
-.btn-add {
-  background: #7c3aed;
-  padding: 10px 15px;
+  margin: 8px 0 15px;
   border-radius: 10px;
   border: none;
-  color: white;
-  cursor: pointer;
+  background: var(--glass-strong);
+  color: var(--text);
 }
 
-.btn-print {
-  background: #10b981;
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
-
-.tabla-servicios {
+.btn-add{
   width: 100%;
-  margin-top: 15px;
-}
-
-.tabla-servicios th, .tabla-servicios td {
-  padding: 10px;
-  border-bottom: 1px solid #333;
-}
-
-.btn-delete {
-  background: red;
+  padding: 12px;
+  background: var(--accent1);
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.totales {
-  margin-top: 20px;
-  padding: 15px;
-  background: #1a1a1a;
+.btn-print{
+  width: 100%;
+  padding: 12px;
+  background: var(--accent2);
+  color: white;
+  border: none;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+.tabla-servicios{
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+
+.tabla-servicios th, .tabla-servicios td{
+  padding: 12px;
+  border-bottom: 1px solid var(--glass-strong);
+}
+
+.remove-btn{
+  background: #ef4444;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
 }
