@@ -1,0 +1,67 @@
+.cotizador-container {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+}
+
+.left-panel, .right-panel {
+  background: #111;
+  color: white;
+  padding: 25px;
+  border-radius: 20px;
+  width: 50%;
+}
+
+.left-panel input, .left-panel select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: #222;
+  border: none;
+  color: white;
+}
+
+.btn-add {
+  background: #7c3aed;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-print {
+  background: #10b981;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.tabla-servicios {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.tabla-servicios th, .tabla-servicios td {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.btn-delete {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.totales {
+  margin-top: 20px;
+  padding: 15px;
+  background: #1a1a1a;
+  border-radius: 10px;
+}
