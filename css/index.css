@@ -79,20 +79,24 @@ body{
   transform: translateY(0) scale(1);
 }
 
-/* ================================
-   FIX PARA SELECT EN MODO OSCURO
-   (Evita fondo blanco y texto blanco)
-=================================== */
 
-select {
-  background: var(--glass-strong); /* mantiene tu estilo */
-  color: var(--text);              /* texto blanco */
+/* ==== INPUTS (ESTILO GLASS) ==== */
+input, select{
+  width:100%;
+  margin-top:12px;
+  padding:12px 14px;
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px;
+  color:#fff;
+  outline:none;
+  font-size:0.95rem;
+  transition:0.2s;
 }
 
-/* Estilo del menú desplegable */
-select option {
-  background: #1b1030;  /* fondo oscuro */
-  color: #fff;          /* texto blanco */
+input:focus, select:focus{
+  border-color: var(--accent1);
+  background: rgba(255,255,255,0.12);
 }
 /* ==== BOTÓN PRINCIPAL (IGUAL AL DISEÑO) ==== */
 .btn{
@@ -146,5 +150,6 @@ select option {
     margin-bottom:25px;
   }
 }
+
 
 
