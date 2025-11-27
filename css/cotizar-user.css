@@ -174,6 +174,11 @@ input, select{
   background: var(--glass-strong);
   color: var(--text);
 }
+/* Evitar desplegable blanco */
+select option {
+  background: #1b1030;
+  color: #fff;
+}
 
 /* =========================
       BOTONES
