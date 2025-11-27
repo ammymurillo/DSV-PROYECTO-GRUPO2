@@ -1,43 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizar - TechFix</title>
+    <link rel="stylesheet" href="css/cotizar-user.css">
+    <script src="js/servicios.js" defer></script>
+    <script src="js/cotizar-user.js" defer></script>
+</head>
+
+<body>
+<header class="site-header small">
+    <div class="logo"><div class="logo-dot"></div><span>TechFix</span></div>
+    <nav class="nav">
+        <a href="index-user.html">Inicio</a>
+        <a href="servicios-user.html">Servicios</a>
+        <a href="cotizar-user.html" class="active">Cotizar</a>
+    </nav>
+</header>
+
 <section class="cotizador-container">
-  <div class="left-panel">
-    <h2>Crear Cotización</h2>
 
-    <label>Cliente</label>
-    <input type="text" id="nombreCliente" placeholder="Nombre del cliente">
+    <div class="left-panel">
+        <h2>Crear Cotización</h2>
 
-    <label>Seleccionar Servicio</label>
-    <select id="selectServicio"></select>
+        <label>Cliente</label>
+        <input type="text" id="nombreCliente" placeholder="Nombre del cliente">
 
-    <button id="btnAgregar" class="btn-add">Agregar Servicio</button>
+        <label>Seleccionar Servicio</label>
+        <select id="selectServicio"></select>
 
-    <hr>
+        <button id="btnAgregar" class="btn-add">Agregar Servicio</button>
 
-    <button id="btnImprimir" class="btn-print">Imprimir Cotización</button>
-  </div>
+        <hr>
 
-  <div class="right-panel">
-    <h3>Cotización</h3>
-
-    <div class="factura-header">
-      <p><b>N° Cotización:</b> <span id="idCotizacion"></span></p>
-      <p><b>Fecha:</b> <span id="fechaCotizacion"></span></p>
+        <button id="btnImprimir" class="btn-print">Imprimir Cotización</button>
     </div>
 
-    <table class="tabla-servicios">
-      <thead>
-        <tr>
-          <th>Servicio</th>
-          <th>Precio</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="tablaServicios"></tbody>
-    </table>
+    <div class="right-panel">
+        <h3>Cotización</h3>
 
-    <div class="totales">
-      <p>Subtotal: <span id="subtotal">$0.00</span></p>
-      <p>ITBMS (7%): <span id="itbms">$0.00</span></p>
-      <h3>Total: <span id="total">$0.00</span></h3>
+        <div class="factura-header">
+            <p><b>N° Cotización:</b> <span id="idCotizacion"></span></p>
+            <p><b>Fecha:</b> <span id="fechaCotizacion"></span></p>
+        </div>
+
+        <table class="tabla-servicios">
+            <thead>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Precio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tablaServicios"></tbody>
+        </table>
+
+        <div class="totales">
+            <p>Subtotal: <span id="subtotal">$0.00</span></p>
+            <p>ITBMS (7%): <span id="itbms">$0.00</span></p>
+            <h3>Total: <span id="total">$0.00</span></h3>
+        </div>
     </div>
-  </div>
+
 </section>
+
+</body>
+</html>
+
