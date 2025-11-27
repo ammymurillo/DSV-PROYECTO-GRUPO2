@@ -9,95 +9,85 @@ document.addEventListener("DOMContentLoaded", () => {
   const idCotizacion = document.getElementById("idCotizacion");
   const fechaCotizacion = document.getElementById("fechaCotizacion");
 
-  // --- Datos ---
-  let listaCotizacion = [];
+  // --- LISTA ---
+  let listaServicios = [];
 
-  // generar ID de cotización
-  idCotizacion.textContent = "CT-" + Math.floor(Math.random() * 999999);
+  // === GENERAR ID Y FECHA SOLO UNA VEZ ===
+  idCotizacion.textContent = "CT-" + Math.floor(Math.random() * 900000 + 100000);
   fechaCotizacion.textContent = new Date().toLocaleDateString("es-PA");
 
-  // =========================
-  //   1. Cargar servicios desde servicios.js
-  // =========================
+  // === CARGAR SERVICIOS DESDE servicios.js ===
+  function cargarServicios() {
 
-  if (typeof services !== "undefined") {
-    services.forEach(s => {
+    selectServicio.innerHTML = "";
+
+    [...serviciosDisponibles, ...serviciosOfertas].forEach(s => {
       const option = document.createElement("option");
-      option.value = s.price;
-      option.dataset.nombre = s.name;
-      option.textContent = `${s.name} - $${s.price.toFixed(2)}`;
+      option.value = s.id;
+      option.innerText = `${s.nombre} - $${s.precio}`;
       selectServicio.appendChild(option);
     });
   }
 
-  // =========================
-  //   2. Agregar servicio a la cotización
-  // =========================
+  cargarServicios();
 
+  // === AGREGAR SERVICIO ===
   document.getElementById("btnAgregar").addEventListener("click", () => {
-    const selected = selectServicio.options[selectServicio.selectedIndex];
 
-    const servicio = {
-      nombre: selected.dataset.nombre,
-      precio: parseFloat(selected.value)
-    };
+    const idServicio = parseInt(selectServicio.value);
 
-    listaCotizacion.push(servicio);
-    renderTabla();
+    const servicio =
+      serviciosDisponibles.find(s => s.id === idServicio) ||
+      serviciosOfertas.find(s => s.id === idServicio);
+
+    listaServicios.push(servicio);
+
+    actualizarTabla();
+    calcularTotales();
   });
 
-  // =========================
-  //   3. Renderizar tabla
-  // =========================
-
-  function renderTabla() {
+  // === ACTUALIZAR TABLA ===
+  function actualizarTabla() {
     tablaServicios.innerHTML = "";
 
-    listaCotizacion.forEach((item, index) => {
-      const tr = document.createElement("tr");
+    listaServicios.forEach((s, index) => {
+      const row = document.createElement("tr");
 
-      tr.innerHTML = `
-        <td>${item.nombre}</td>
-        <td>$${item.precio.toFixed(2)}</td>
-        <td><button class="btn-delete" data-index="${index}">X</button></td>
+      row.innerHTML = `
+        <td>${s.nombre}</td>
+        <td>$${s.precio.toFixed(2)}</td>
+        <td><button class="remove-btn" onclick="eliminar(${index})">X</button></td>
       `;
 
-      tablaServicios.appendChild(tr);
+      tablaServicios.appendChild(row);
     });
+  }
 
+  // === ELIMINAR SERVICIO ===
+  function eliminar(index) {
+    listaServicios.splice(index, 1);
+    actualizarTabla();
     calcularTotales();
-    agregarEventosEliminar();
   }
 
-  function agregarEventosEliminar() {
-    document.querySelectorAll(".btn-delete").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const index = e.target.dataset.index;
-        listaCotizacion.splice(index, 1);
-        renderTabla();
-      });
-    });
-  }
+  // hacer accesible la función al HTML
+  window.eliminar = eliminar;
 
-  // =========================
-  //   4. Calcular totales
-  // =========================
-
+  // === CALCULAR TOTALES ===
   function calcularTotales() {
-    const subtotal = listaCotizacion.reduce((acc, s) => acc + s.precio, 0);
+    const subtotal = listaServicios.reduce((t, s) => t + s.precio, 0);
     const itbms = subtotal * 0.07;
     const total = subtotal + itbms;
 
-    subtotalDOM.textContent = "$" + subtotal.toFixed(2);
-    itbmsDOM.textContent = "$" + itbms.toFixed(2);
-    totalDOM.textContent = "$" + total.toFixed(2);
+    subtotalDOM.innerText = `$${subtotal.toFixed(2)}`;
+    itbmsDOM.innerText = `$${itbms.toFixed(2)}`;
+    totalDOM.innerText = `$${total.toFixed(2)}`;
   }
 
-  // =========================
-  //   5. Imprimir factura
-  // =========================
-
+  // === IMPRIMIR ===
   document.getElementById("btnImprimir").addEventListener("click", () => {
     window.print();
   });
+
 });
+
