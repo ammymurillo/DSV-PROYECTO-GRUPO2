@@ -1,4 +1,7 @@
 // servicios.js
+// Nota: este archivo ahora expone `window.serviciosDisponibles` y `window.serviciosOfertas`
+// para que otros scripts (ej. cotizar.js) puedan leerlos.
+
 document.addEventListener('DOMContentLoaded', () => {
   const services = [
     // PC
@@ -18,20 +21,39 @@ document.addEventListener('DOMContentLoaded', () => {
     { tipo: "network", name: "Instalación de Cámaras IP", price: 230.50, old: 350.00, desc: "Montaje, configuración y visualización remota de cámaras.", specs:["Montaje","Configuración NVR","Acceso remoto"] }
   ];
 
+  // --- Convertir a la forma que espera el cotizador ---
+  // Creamos arrays con campos 'id','nombre','precio' para compatibilidad
+  const serviciosDisponibles = services.map((s, i) => ({
+    id: i + 1,
+    nombre: s.name,
+    precio: s.price,
+    tipo: s.tipo,
+    desc: s.desc,
+    old: s.old,
+    specs: s.specs
+  }));
+
+  // Si tienes ofertas separadas, aquí podrías filtrarlas. Por ahora dejamos vacío.
+  const serviciosOfertas = []; // puedes añadir objetos {id, nombre, precio} si tienes ofertas
+
+  // Exponer en window para que cotizar.js pueda leerlos
+  window.serviciosDisponibles = serviciosDisponibles;
+  window.serviciosOfertas = serviciosOfertas;
+
+  // --- Render del grid original (tu código existente) ---
   const grid = document.getElementById('servicesGrid');
   const toggles = document.querySelectorAll('.toggle');
   const search = document.getElementById('search');
 
-  // small SVG icons by category (return svg string)
   function iconSVG(tipo){
-    if(tipo === 'pc') return `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="13" rx="2" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/><path d="M8 20h8" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" stroke-linecap="round"/></svg>`;
-    if(tipo === 'laptop') return `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="11" rx="1.5" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/><path d="M2 20h20" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" stroke-linecap="round"/></svg>`;
-    if(tipo === 'network') return `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="5" r="2" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/><path d="M12 7v6" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/><circle cx="6" cy="16" r="2" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/><circle cx="18" cy="16" r="2" stroke="rgba(255,255,255,0.9)" stroke-width="1.2"/><path d="M7.5 14l4.5-3 4.5 3" stroke="rgba(255,255,255,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    if(tipo === 'pc') return `<svg ...>...</svg>`;
+    if(tipo === 'laptop') return `<svg ...>...</svg>`;
+    if(tipo === 'network') return `<svg ...>...</svg>`;
     return '';
   }
 
-  // render function
   function render(type = 'pc', filter = ''){
+    if(!grid) return;
     grid.innerHTML = '';
     const list = services.filter(s => s.tipo === type && (s.name.toLowerCase().includes(filter.toLowerCase()) || s.desc.toLowerCase().includes(filter.toLowerCase())));
     if(list.length === 0){
@@ -59,20 +81,23 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       grid.appendChild(card);
 
-      // small stagger reveal
       setTimeout(()=> card.classList.add('visible'), 80 * idx);
 
-      // CTA click
-      card.querySelector('.btn').addEventListener('click', (e)=>{
-        const name = e.currentTarget.dataset.name;
-        const price = e.currentTarget.dataset.price;
-        // ejemplo: enviar a cotizar (por ahora un alert)
-        alert(`Servicio seleccionado:\n${name}\nPrecio base: $${Number(price).toFixed(2)}`);
+      // Al pulsar "Seleccionar" — opción: si existe window.addToCotizacion lo llamamos
+      card.querySelector('.btn').addEventListener('click', (e) => {
+        const nombre = e.currentTarget.dataset.name;
+        const precio = parseFloat(e.currentTarget.dataset.price);
+        if(window.addToCotizacion && typeof window.addToCotizacion === 'function') {
+          // enviamos objeto simple al cotizador
+          window.addToCotizacion({ nombre, precio });
+        } else {
+          // comportamiento por defecto: mostrar alerta
+          alert(`Servicio seleccionado:\n${nombre}\nPrecio: $${precio.toFixed(2)}`);
+        }
       });
     });
   }
 
-  // toggles behaviour
   toggles.forEach(btn => {
     btn.addEventListener('click', ()=> {
       toggles.forEach(b => b.classList.remove('active'));
@@ -81,24 +106,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // search behaviour (debounced)
   let debounce;
-  search.addEventListener('input', e=>{
-    clearTimeout(debounce);
-    debounce = setTimeout(()=> {
-      const activeType = document.querySelector('.toggle.active').dataset.type;
-      render(activeType, e.target.value);
-    }, 180);
-  });
+  if(search) {
+    search.addEventListener('input', e=>{
+      clearTimeout(debounce);
+      debounce = setTimeout(()=> {
+        const activeType = document.querySelector('.toggle.active')?.dataset.type || 'pc';
+        render(activeType, e.target.value);
+      }, 180);
+    });
+  }
 
-  // initial render
   render('pc');
 
-  // IntersectionObserver for subtle parallax / glow (optional)
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{
-      if(en.isIntersecting) en.target.style.transform = 'translateY(0)';
+  // IntersectionObserver opcional
+  setTimeout(()=> {
+    document.querySelectorAll('.card').forEach(c => {
+      c.style.transform = 'translateY(0)';
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.card').forEach(c => observer.observe(c));
+  }, 300);
+
 });
+
