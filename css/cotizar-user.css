@@ -164,10 +164,15 @@ body{
 /* =========================
       FORM
 ========================= */
-/* =====================================
-   SELECT GLASS NEON (Estilo TechFix)
-   ===================================== */
-
+input, select{
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px;
+  border-radius: 10px;
+  border: none;
+  background: var(--glass-strong);
+  color: var(--text);
+}
 select {
   width: 100%;
   padding: 12px;
