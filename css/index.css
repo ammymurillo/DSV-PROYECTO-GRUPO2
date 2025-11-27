@@ -97,7 +97,11 @@ input:focus, select:focus{
   border-color: var(--accent1);
   background: rgba(255,255,255,0.12);
 }
-
+/* Evitar desplegable blanco */
+select option {
+  background: #1b1030;
+  color: #fff;
+}
 /* ==== BOTÓN PRINCIPAL (IGUAL AL DISEÑO) ==== */
 .btn{
   width:100%;
@@ -150,3 +154,4 @@ input:focus, select:focus{
     margin-bottom:25px;
   }
 }
+
