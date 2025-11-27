@@ -165,21 +165,21 @@ body{
       FORM
 ========================= */
 
-input, select{
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0 15px;
-  border-radius: 10px;
-  border: none;
-  background: var(--glass-strong);
-  color: var(--text);
-}
-/* Evitar desplegable blanco */
-select option {
-  background: #1b1030;
-  color: #fff;
+/* ================================
+   FIX PARA SELECT EN MODO OSCURO
+   (Evita fondo blanco y texto blanco)
+=================================== */
+
+select {
+  background: var(--glass-strong); /* mantiene tu estilo */
+  color: var(--text);              /* texto blanco */
 }
 
+/* Estilo del menú desplegable */
+select option {
+  background: #1b1030;  /* fondo oscuro */
+  color: #fff;          /* texto blanco */
+}
 /* =========================
       BOTONES
 ========================= */
