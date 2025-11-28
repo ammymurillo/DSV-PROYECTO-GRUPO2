@@ -1,21 +1,21 @@
 /* header */
 .site-header {
   width: 100%;
-  padding: 10px 40px;
+  padding: 10px 35px;
   background: rgba(15, 15, 15, 0.75);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 0;
+  position: relative;
+  top: auto;
   overflow: hidden;
   z-index: 999;
 }
 
 .site-header.small {
-  padding: 12px 40px;
+  padding: 8px 40px;
 }
 
 /* LOGO */
