@@ -28,9 +28,11 @@
       <label>Nombre del Cliente</label>
       <input type="text" id="clienteInput" placeholder="Ej: Jorge Ramon" required>
 
-      <button id="btnBuscarCliente" type="button" class="btn-primary">Verificar Cliente</button>
+      <!-- 🔥 Se elimina el botón Verificar Cliente -->
+      <!-- 🔥 El bloque ahora siempre está visible -->
 
-      <div id="clienteValido" hidden>
+      <div id="clienteValido">
+
         <label>Fecha de Cotización</label>
         <input type="date" id="fechaCotizacion" required>
 
@@ -46,6 +48,7 @@
         <div class="servicios-lista" id="listaServicios"></div>
 
         <button type="submit" class="btn-primary">Generar Cotización</button>
+
       </div>
     </form>
 
@@ -55,6 +58,8 @@
   </main>
 </body>
 </html>
+
+
 
 
 
