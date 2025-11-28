@@ -1,279 +1,482 @@
-/* ========== COLORES BASE ========== */
-:root {
-  --bg1: #0b0216;
-  --bg2: #2b063f;
-  --panel: rgba(255,255,255,0.06);
-  --panel-strong: rgba(255,255,255,0.12);
-  --accent1: #a855f7;
-  --accent2: #7c3aed;
-  --text: #eef2ff;
+/* =========================
+      PALETA GENERAL
+========================= */
+
+:root{
+    --bg1: #0b0216;         /* Fondo muy oscuro */
+    --bg2: #2b063f;         /* Fondo oscuro/degradado */
+    --accent1: #a855f7;     /* Morado Claro (Botón Agregar/Principal) */
+    --accent2: #7c3aed;     /* Morado Oscuro (Botón Imprimir/Acento) */
+    --glass: rgba(255,255,255,0.06); /* Transparente suave */
+    --glass-strong: rgba(255,255,255,0.12); /* Transparente fuerte */
+    --text: #eef2ff;        /* Texto blanco/muy claro */
+    --text-muted: #d6d6d6;  /* Texto secundario */
+    --delete-color: #ef4444; /* Rojo para eliminar */
 }
 
-/* ========== RESET ========== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+/* =========================
+      BODY & FONDO
+========================= */
+body{
+    background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+    color: var(--text);
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    
+    /* === SOLUCIÓN PARA LA BARRA HORIZONTAL === */
+    overflow-x: hidden;
+    /* ======================================= */
 }
 
-body {
-  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
-  min-height: 100vh;
-  color: var(--text);
-  padding-bottom: 40px;
-}
-
-/* ========== HEADER ========== */
+/* =========================
+      HEADER CORECLOUD
+========================= */
 .site-header {
-  width: 100%;
-  padding: 18px 40px;
-  background: #0a0114;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+    width: 100%;
+    padding: 40px 90px;
+    background: rgba(15, 15, 15, 0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.site-header.small {
+    padding: 12px 1px;
 }
 
 .logo {
-  font-size: 22px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 6px 30px;
 }
 
 .logo-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent1);
-  margin-right: 8px;
+    width: 12px;
+    height: 12px;
+    /* Mantenemos el color azul para el punto del logo CoreCloud, 
+       o podrías usar --accent1 para unificarlos: background: var(--accent1); */
+    background: #a855f7; 
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 12px #a855f7;
+}
+
+.nav {
+    display: flex;
+    gap: 22px;
 }
 
 .nav a {
-  margin-left: 25px;
-  text-decoration: none;
-  font-size: 16px;
-  color: var(--text);
-  transition: 0.2s;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: 0.25s ease-in-out;
 }
 
-.nav a:hover,
+.nav a:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
 .nav a.active {
-  color: var(--accent1);
+    /* Usamos el color de acento principal para el item activo */
+    background: #a855f7;
+    color: white;
+    box-shadow: 0 0 12px #a855f7;
 }
 
-/* ========== CONTENEDOR PRINCIPAL ========== */
-.cotizador-container {
-  display: flex;
-  gap: 40px;
-  padding: 40px;
-  justify-content: center;
+/* --- Media Queries del Header --- */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 12px 20px;
+    }
+
+    .nav {
+        gap: 10px;
+    }
+
+    .nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
 }
 
-/* ========== PANEL IZQUIERDO ========== */
-.left-panel {
-  width: 380px;
-  padding: 30px;
-  background: var(--panel);
-  backdrop-filter: blur(20px);
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+/* =========================
+    CONTENEDOR COTIZAR (Glassmorphism)
+========================= */
+
+.cotizador-container{
+    max-width: 1200px;
+    width: 90%;
+    margin: 40px auto;
+    display: flex;
+    gap: 30px; /* Aumentamos el gap un poco */
+    padding: 20px;
+    flex-wrap: wrap;
 }
 
+.left-panel, .right-panel{
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-strong);
+    padding: 30px; /* Aumentamos el padding para más aire */
+    border-radius: 18px; /* Borde más redondeado */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+}
+
+/* panel izquierdo */
+.left-panel{
+    flex: 1 1 320px;
+    max-width: 400px; 
+}
+
+/* panel derecho */
+.right-panel{
+    flex: 2 1 650px;
+}
+
+/* --- Títulos dentro de los Paneles --- */
 .left-panel h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-  font-size: 15px;
-}
-
-input,
-select {
-  width: 100%;
-  margin-top: 5px;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  background: var(--panel-strong);
-  color: var(--text);
-  outline: none;
-  font-size: 15px;
-}
-
-select option {
-  background: #1a0827;
-  color: white;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.12);
-  margin: 25px 0;
-}
-
-/* ========== BOTONES ========== */
-.btn-add,
-.btn-print {
-  width: 100%;
-  margin-top: 18px;
-  padding: 14px;
-  font-size: 16px;
-  border-radius: 12px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn-add {
-  background: linear-gradient(90deg, var(--accent1), var(--accent2));
-}
-
-.btn-add:hover {
-  opacity: 0.85;
-}
-
-.btn-print {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-.btn-print:hover {
-  background: rgba(255,255,255,0.15);
-}
-
-/* ========== PANEL DERECHO ========== */
-.right-panel {
-  width: 650px;
-  padding: 30px;
-  background: var(--panel);
-  backdrop-filter: blur(20px);
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    color: var(--text);
+    font-weight: 700;
+    margin-top: 0;
+    border-bottom: 2px solid var(--glass-strong);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .right-panel h3 {
-  margin-bottom: 10px;
-  font-size: 22px;
+    color: var(--text);
+    font-size: 1.8rem;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--glass-strong);
 }
 
+/* --- Formularios y Labels --- */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border-radius: 10px;
+    border: 1px solid transparent; /* Inicialmente transparente */
+    background: var(--glass-strong);
+    color: var(--text);
+    box-sizing: border-box;
+    transition: 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus {
+    border: 1px solid var(--accent1);
+    background: rgba(255,255,255,0.2);
+    outline: none;
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+}
+
+/* Placeholder color */
+input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--glass-strong);
+    margin: 25px 0;
+}
+
+/* DESPLEGABLE */
+select option {
+    background-color: white; 
+    color: black; 
+    padding: 5px;
+}
+
+/* =========================
+      BOTONES
+========================= */
+
+/* Estilo general para todos los botones del cotizador */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px; /* Mantener los bordes redondeados */
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: all 0.3s ease; /* Transición suave para todos los efectos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white; /* Asegurar que el texto sea blanco */
+}
+
+/* --- Botón AGREGAR SERVICIO (Accent1 - Morado Claro) --- */
+.btn-add{
+    background: var(--accent1);
+    /* Sombra más pronunciada que sugiere elevación */
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4); 
+}
+
+.btn-add:hover{
+    background: #c084fc; /* Un morado ligeramente más claro al pasar el ratón */
+    transform: translateY(-3px); /* Se eleva un poco más */
+    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.6); /* La sombra se agranda con la elevación */
+}
+
+.btn-add:active {
+    transform: translateY(0); /* Simula el click (presionarse) */
+    box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
+}
+
+/* --- Botón IMPRIMIR COTIZACIÓN (Accent2 - Morado Oscuro) --- */
+.btn-print{
+    background: var(--accent2);
+    /* Sombra más pronunciada que sugiere elevación */
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+}
+
+.btn-print:hover{
+    background: #9f7aea; /* Un morado ligeramente más claro al pasar el ratón */
+    transform: translateY(-3px); /* Se eleva un poco más */
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.6); /* La sombra se agranda con la elevación */
+}
+
+.btn-print:active {
+    transform: translateY(0); /* Simula el click (presionarse) */
+    box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
+}
+
+/* =========================
+      HEADER FACTURA
+========================= */
 .factura-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--glass-strong);
+    color: var(--text-muted);
 }
 
-/* ========== TABLA ========== */
-.tabla-servicios {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+.factura-header b {
+    color: var(--text);
+}
+
+
+/* =========================
+      TABLA DE SERVICIOS
+========================= */
+
+.tabla-servicios{
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
 }
 
 .tabla-servicios thead {
-  background: rgba(255,255,255,0.1);
+    background: var(--glass-strong); /* Fondo ligeramente más oscuro para el encabezado */
+    color: var(--text);
 }
 
-.tabla-servicios th,
-.tabla-servicios td {
-  padding: 12px;
-  text-align: left;
+.tabla-servicios th, 
+.tabla-servicios td{
+    padding: 12px;
+    border-bottom: 1px solid var(--glass-strong);
+    text-align: left;
 }
 
-.tabla-servicios tbody tr {
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+.tabla-servicios th:last-child, .tabla-servicios td:last-child {
+    text-align: center;
+    width: 50px;
 }
 
 .tabla-servicios tbody tr:hover {
-  background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.03); /* Leve realce al pasar el mouse */
 }
 
-.tabla-servicios button {
-  background: #ff3366;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-}
-
-/* ========== TOTALES ========== */
-.totales p,
-.totales h3 {
-  font-size: 18px;
-  margin-top: 8px;
-}
-#servicioSelect {
-  width: 100%;
-  padding: 10px;
-  background: var(--glass);
-  border: 1px solid var(--glass-strong);
-  color: var(--text);
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-
-.contenedor {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    width: 80%;
-    margin: 60px auto;
-}
-
-.panel {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 16px;
-    padding: 30px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.panel h2 {
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-.panel-izquierdo input,
-.panel-izquierdo select {
-    width: 100%;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.btn-add {
-    width: 100%;
-    padding: 12px;
-    background: #9b4dff;
+/* Botón de eliminar (asumiendo la clase 'remove-btn' o similar) */
+.remove-btn{
+    background: var(--delete-color);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
     border: none;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    font-size: 16px;
+    transition: 0.25s;
+    /* Ajustes para ser un botón pequeño en la tabla */
+    width: auto; 
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn-print {
-    width: 100%;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
+.remove-btn:hover{
+    background: #dc2626;
+    transform: scale(1.05);
 }
 
+/* =========================
+      TOTALES
+========================= */
+.totales {
+    text-align: right;
+    padding-top: 15px;
+    border-top: 2px solid var(--accent2); /* Línea de división con el color acento */
+    margin-top: 20px;
+}
+
+.totales p, .totales h3 {
+    margin: 10px 0;
+    padding-right: 5px;
+}
+
+.totales p {
+    color: var(--text-muted);
+}
+
+.totales h3 {
+    font-size: 1.8rem;
+    color: var(--text); /* Color principal para el total */
+    font-weight: 700;
+}
+
+.totales span {
+    display: inline-block;
+    width: 120px; /* Alineación de los precios */
+    text-align: right;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* =========================
+      RESPONSIVE PARA PANTALLAS CHICAS
+========================= */
+@media (max-width: 900px) {
+    .cotizador-container{
+        flex-direction: column;
+        width: 95%;
+        padding: 15px;
+    }
+
+    .left-panel, .right-panel{
+        max-width: 100%;
+    }
+}
+
+
+/* ======================================= */
+/* --- ESTILOS DE IMPRESIÓN (Print CSS) --- */
+/* ======================================= */
+
+@media print {
+    /* Reseteamos el fondo y el color del texto para impresión */
+    body {
+        background: white !important;
+        color: black !important;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Ocultar elementos de navegación y control */
+    .site-header, .left-panel, #btnAgregar, #btnImprimir, .remove-btn, th:last-child, td:last-child {
+        display: none !important; 
+    }
+    
+    .cotizador-container {
+        display: block;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* El panel de cotización toma un estilo de documento */
+    .right-panel {
+        box-shadow: none !important;
+        border: 1px solid #999 !important;
+        border-radius: 0 !important;
+        background: white !important;
+        padding: 30px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .right-panel h3 {
+        text-align: center;
+        border-bottom: 2px solid #ccc !important;
+        color: black !important;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Encabezado de la factura */
+    .factura-header {
+        border-bottom: 1px solid #333;
+        color: #333;
+    }
+    .factura-header b {
+        color: black;
+    }
+
+
+    /* Tabla para impresión */
+    .tabla-servicios {
+        border: 1px solid #ccc;
+    }
+
+    .tabla-servicios thead {
+        background-color: #eee !important;
+        color: black !important;
+    }
+    
+    .tabla-servicios th, .tabla-servicios td {
+        border: 1px solid #ccc;
+        color: black !important;
+    }
+    .tabla-servicios tbody tr:hover {
+        background: inherit;
+    }
+
+    /* Totales para impresión */
+    .totales {
+        border-top: 2px double #ccc !important;
+    }
+    
+    .totales h3, .totales p {
+        color: black !important;
+    }
+    
+    .totales span {
+        color: black !important;
+    }
+}
 
