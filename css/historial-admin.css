@@ -1,21 +1,19 @@
-/* header */
 .site-header {
   width: 100%;
-  padding: 10px 35px;
+  padding: 18px 40px;
   background: rgba(15, 15, 15, 0.75);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  top: auto;
-  overflow: hidden;
+  position: sticky;
+  top: 0;
   z-index: 999;
 }
 
 .site-header.small {
-  padding: 8px 40px;
+  padding: 12px 40px;
 }
 
 /* LOGO */
@@ -36,13 +34,11 @@
   margin-right: 8px;
   box-shadow: 0 0 12px #4f8cff;
 }
+
+/* NAV */
 .nav {
   display: flex;
   gap: 22px;
-  flex-wrap: nowrap;   
-  justify-content: flex-start; 
-  max-width: 100%;    
-  overflow-x: hidden;  
 }
 
 .nav a {
