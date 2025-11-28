@@ -206,10 +206,10 @@ body{
 .logo-dot {
   width: 12px;
   height: 12px;
-  background: #7b2ff7;
+  background: #a855f7
   border-radius: 50%;
   margin-right: 8px;
-  box-shadow: 0 0 12px rgba(123, 47, 247, 0.6);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.25);
 }
 
 /* ===== NAV ===== */
@@ -236,9 +236,9 @@ body{
 
 /* Link actual */
 .nav a.active {
-  background: #7b2ff7;
+  background: #a855f7;
   color: white;
-  box-shadow: 0 8px 24px rgba(123, 47, 247, 0.3);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.25);
 }
 
 /* Botón "ghost" tipo borde */
@@ -267,6 +267,7 @@ body{
     padding: 6px 10px;
   }
 }
+
 
 
 
