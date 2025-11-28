@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     totalDOM.innerText = `$${total.toFixed(2)}`;
   }
 
-   // imprimir
+  // imprimir
   document.getElementById("btnImprimir").addEventListener("click", () => {
     // incluir nombre del cliente como título opcional en impresión
     if(nombreClienteInput && nombreClienteInput.value.trim()) {
@@ -133,31 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.print();
   });
 
-
-  //historial
-document.getElementById("btnGuardarHistorial").addEventListener("click", () => {
-
-    const fecha = document.getElementById("fechaCotizacion").textContent || "-";
-    const numeroCot = document.getElementById("idCotizacion").textContent || "-";
-    const cliente = document.getElementById("nombreCliente").value || "Sin nombre";
-
-    const subtotal = document.getElementById("subtotal").textContent.replace("$", "") || 0;
-    const impuesto = document.getElementById("itbms").textContent.replace("$", "") || 0;
-    const total = document.getElementById("total").textContent.replace("$", "") || 0;
-
-    const nuevaFila = `
-        <tr>
-            <td>${fecha}</td>
-            <td>${numeroCot}</td>
-            <td>${cliente}</td>
-            <td>$${subtotal}</td>
-            <td>$${impuesto}</td>
-            <td>$${total}</td>
-        </tr>
-    `;
-
-    document.querySelector("#tablaHistorial tbody").innerHTML += nuevaFila;
-});
 });
 
 
