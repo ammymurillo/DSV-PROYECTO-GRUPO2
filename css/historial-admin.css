@@ -40,7 +40,12 @@
 .nav {
   display: flex;
   gap: 22px;
+  flex-wrap: nowrap;   
+  justify-content: flex-start; 
+  max-width: 100%;    
+  overflow-x: hidden;  
 }
+
 
 .nav a {
   color: #d6d6d6;
