@@ -10,21 +10,14 @@
   align-items: center;
   position: fixed;
   top: 0;
+  overflow: hidden;
   z-index: 999;
 }
 
 .site-header.small {
   padding: 12px 40px;
 }
-.site-header {
-  overflow: hidden; /* evita que se salga contenido */
-}
 
-.nav {
-  flex-wrap: wrap;  /* hace que los links bajen si no caben */
-  justify-content: flex-end; /* alineación a la izquierda del logo */
-  gap: 15px; /* un poco menos para que no empuje tanto */
-}
 /* LOGO */
 .logo {
   display: flex;
@@ -43,7 +36,14 @@
   margin-right: 8px;
   box-shadow: 0 0 12px #4f8cff;
 }
-
+.nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: nowrap;   
+  justify-content: flex-start; 
+  max-width: 100%;    
+  overflow-x: hidden;  
+}
 
 .nav a {
   color: #d6d6d6;
