@@ -110,6 +110,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  //boton de guardar
+  document.getElementById("btnGuardar").addEventListener("click", () => {
+    const fecha = document.getElementById("fechaCotizacion").textContent;
+    const numero = document.getElementById("idCotizacion").textContent;
+    const cliente = document.getElementById("nombreCliente").value.trim() || "Sin nombre";
+
+    const subtotal = document.getElementById("subtotal").textContent.replace("$", "");
+    const itbms = document.getElementById("itbms").textContent.replace("$", "");
+    const total = document.getElementById("total").textContent.replace("$", "");
+
+    const registro = {
+        fecha,
+        numero,
+        cliente,
+        subtotal,
+        itbms,
+        total
+    };
+
+    let historial = JSON.parse(localStorage.getItem("historialAdmin")) || [];
+    historial.push(registro);
+    localStorage.setItem("historialAdmin", JSON.stringify(historial));
+
+    alert("Cotización guardada correctamente ✔");
+});
+
   // calcular totales
   function calcularTotales(){
     const subtotal = listaServicios.reduce((acc, s) => acc + Number(s.precio || 0), 0);
@@ -134,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
 
 
 
