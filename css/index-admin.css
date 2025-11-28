@@ -1,5 +1,5 @@
 /* =========================================================
-   ESTILO MORADO NEÓN — TECHFIX (FULL REWORK)
+   ESTILO MORADO NEÓN — CORECLOUD (FULL REWORK)
    Inspirado en diseño AI Startup UI – Glow + Glass + Orbits
 ========================================================= */
 
@@ -203,6 +203,32 @@ body::after {
 }
 
 /* =========================================================
+   WELCOME IMAGE — GLASS + SHADOW
+========================================================= */
+.welcome-img {
+  width: 700px;
+  margin-left: -30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0 0 40px rgba(180, 90, 255, 0.15);
+  transition: 0.3s;
+}
+
+.welcome-img:hover {
+  transform: translateY(-10px);
+}
+
+.welcome-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(180, 90, 255, 0.2);
+}
+
+/* =========================================================
    HERO PANEL — GLASS + SHADOW
 ========================================================= */
 
@@ -312,4 +338,5 @@ body::after {
 }
 
 /* ========================================================= */
+
 
