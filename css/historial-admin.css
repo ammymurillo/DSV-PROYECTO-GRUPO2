@@ -1,0 +1,56 @@
+:root{
+    --bg1: #0b0216;
+    --bg2: #2b063f;
+    --accent1: #a855f7;
+    --accent2: #7c3aed;
+    --glass: rgba(255,255,255,0.06);
+    --glass-strong: rgba(255,255,255,0.12);
+    --text: #eef2ff;
+}
+
+body{
+    background: linear-gradient(135deg, var(--bg1), var(--bg2));
+    font-family: "Poppins", sans-serif;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+}
+
+.historial-container {
+    width: 80%;
+    margin: 40px auto;
+    padding: 25px;
+    background: var(--glass);
+    border: 1px solid var(--glass-strong);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: var(--accent1);
+}
+
+.tabla-historial {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--glass);
+}
+
+.tabla-historial thead {
+    background: var(--accent2);
+}
+
+.tabla-historial th {
+    padding: 12px;
+    color: white;
+}
+
+.tabla-historial td {
+    padding: 10px;
+    border-bottom: 1px solid var(--glass-strong);
+}
+
+.tabla-historial tr:hover {
+    background: rgba(255,255,255,0.05);
+}
