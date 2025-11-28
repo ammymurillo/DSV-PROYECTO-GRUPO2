@@ -65,9 +65,9 @@ html,body{
 }
 
 .nav a.active {
-  background: #4f8cff;
+  background: #a855f7;
   color: white;
-  box-shadow: 0 0 12px rgba(79,140,255,0.6);
+  box-shadow: 0 0 12px rgba(123, 47, 247, 0.6);
 }
 
 /* ===== CONTENEDOR GENERAL ===== */
@@ -208,3 +208,4 @@ tbody tr:hover{
   .container{padding:10px;}
   .title{font-size:1.8rem;}
 }
+
