@@ -19,59 +19,41 @@
       </ol>
     </div>
 
-    <!-- PANEL DERECHO ACTUALIZADO -->
     <div class="right-panel" style="flex:1; display:flex; justify-content:center; align-items:center; padding:40px;">
       <div class="form-box card visible" style="width:100%; max-width:400px;">
-        <h2 style="margin-bottom:12px;">Ingrese sus datos</h2>
+        <h2 style="margin-bottom:12px;">Selecciona tu rol</h2>
+        <select id="role" class="toggle">
+          <option value=""> Selecciona </option>
+          <option value="admin">Administrador</option>
+          <option value="cliente">Cliente</option>
+        </select>
 
         <div id="login" class="form-section" style="margin-top:20px;">
           <h3>Iniciar sesión</h3>
-          <input type="text" id="loginName" placeholder="Usuario" class="toggle" />
+          <input type="text" id="loginName" placeholder="Nombre" class="toggle" />
           <input type="password" id="loginPass" placeholder="Contraseña" class="toggle" />
-          
-          <div class="form-options">
-            <label class="checkbox-wrapper">
-              <input type="checkbox" id="remember">
-              <span class="checkmark"></span>
-              Recordar Usuario
-            </label>
-            <a class="forgot-link" href="#" onclick="showPasswordRecovery()">¿Contraseña Olvidada?</a>
-          </div>
-
           <button onclick="login()" class="btn">Ingresar</button>
           <p style="margin-top:10px;">¿No tienes cuenta? <span onclick="toggleRegister()" style="color:var(--accent1); cursor:pointer;">Regístrate</span></p>
         </div>
 
         <div id="register" class="form-section hidden" style="margin-top:20px;">
           <h3>Registro</h3>
-          <input type="text" id="regName" placeholder="Nombre Completo" class="toggle" />
-          <input type="text" id="regUser" placeholder="Usuario" class="toggle" />
+          <input type="text" id="regName" placeholder="Nombre" class="toggle" />
           <input type="email" id="regEmail" placeholder="Correo" class="toggle" />
+          <input type="text" id="regPhone" placeholder="Celular" class="toggle" />
           <input type="password" id="regPass" placeholder="Contraseña" class="toggle" />
-          
-          <div class="password-strength">
-            <div class="strength-bar"></div>
-            <span class="strength-text"></span>
-          </div>
-
           <button onclick="register()" class="btn">Registrarse</button>
-          <p style="margin-top:10px;">¿Ya tienes cuenta? <span onclick="toggleLogin()" style="color:var(--accent1); cursor:pointer;">Inicia sesión</span></p>
-        </div>
-
-        <div id="password-recovery" class="form-section hidden" style="margin-top:20px;">
-          <h3>Recuperar Contraseña</h3>
-          <input type="email" id="recoveryEmail" placeholder="Correo Electrónico" class="toggle" />
-          <button onclick="recoverPassword()" class="btn">Enviar Instrucciones</button>
-          <p style="margin-top:10px;"><span onclick="toggleLogin()" style="color:var(--accent1); cursor:pointer;">Volver al Inicio de Sesión</span></p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Notificaciones -->
-  <div id="notification" class="notification hidden"></div>
-
-  <script src="js/login.js"></script>
+  <script src="js/index.js"></script>
 </body>
+
 </html>
+
+
+
+
 
