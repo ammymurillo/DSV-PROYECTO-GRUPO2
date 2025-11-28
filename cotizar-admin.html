@@ -27,36 +27,61 @@
   <!-- =============== CONTENEDOR PRINCIPAL =============== -->
   <div class="cotizador-container">
 
-    <!-- =============== PANEL IZQUIERDO (Filtros / Datos Cliente) =============== -->
-    <div class="left-panel">
+   <div class="contenedor">
+    
+    <!-- PANEL IZQUIERDO -->
+    <div class="panel panel-izquierdo">
+        <h2>Datos del Cliente</h2>
 
-      <h2>Datos del Cliente</h2>
+        <label>Nombre del cliente</label>
+        <input type="text" id="nombreCliente" placeholder="Ej: Juan Pérez">
 
-      <label for="clienteNombre">Nombre del cliente</label>
-      <input type="text" id="clienteNombre" placeholder="Ej: Juan Pérez">
+        <label>Correo</label>
+        <input type="email" id="correo" placeholder="correo@ejemplo.com">
 
-      <label for="clienteCorreo">Correo</label>
-      <input type="text" id="clienteCorreo" placeholder="correo@ejemplo.com">
+        <label>Teléfono</label>
+        <input type="text" id="telefono" placeholder="0000-0000">
 
-      <label for="clienteTelefono">Teléfono</label>
-      <input type="text" id="clienteTelefono" placeholder="0000-0000">
+        <hr>
 
-      <hr>
+        <h2>Agregar Servicio</h2>
 
-      <h2>Agregar Servicio</h2>
+        <label>Servicio</label>
+        <select id="servicioSelect">
+            <option value="" disabled selected>Seleccionar servicio...</option>
+        </select>
 
-<label for="servicioSelect">Servicio</label>
-<select id="servicioSelect">
-  <option value="" disabled selected>Seleccionar servicio...</option>
-</select>
+        <button id="btnAgregar" class="btn-add">Agregar Servicio</button>
+        <button id="btnImprimir" class="btn-print">Imprimir Cotización</button>
+    </div>
 
-<button class="btn-add" id="btnAgregar">
-   Agregar Servicio
-</button>
+    <!-- PANEL DERECHO -->
+    <div class="panel panel-derecho">
+        <h2>Servicios Agregados</h2>
 
-<button class="btn-print" id="btnImprimir">
-   Imprimir Cotización
-</button>
+        <div class="info">
+            <strong>Cliente:</strong> <span id="clienteNombre">—</span>
+            <span style="float: right;"><strong>Fecha:</strong> <span id="fecha"></span></span>
+        </div>
+
+        <table id="tablaServicios">
+            <thead>
+                <tr>
+                    <th>Servicio</th>
+                    <th>Precio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="totales">
+            <p>Subtotal: <span id="subtotal">$0</span></p>
+            <p>Impuesto (7%): <span id="impuesto">$0</span></p>
+            <p><strong>Total: <span id="total">$0</span></strong></p>
+        </div>
+    </div>
+</div>
 
     <!-- =============== PANEL DERECHO (Tabla + Totales) =============== -->
     <div class="right-panel">
@@ -93,6 +118,7 @@
 
 </body>
 </html>
+
 
 
 
