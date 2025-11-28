@@ -206,10 +206,10 @@ body{
 .logo-dot {
   width: 12px;
   height: 12px;
-  background: #4f8cff;
+  background: #a855f7;
   border-radius: 50%;
   margin-right: 8px;
-  box-shadow: 0 0 12px #4f8cff;
+  box-shadow: 0 0 12px #a855f7;
 }
 
 /* ===== NAV ===== */
@@ -236,9 +236,9 @@ body{
 
 /* Link actual */
 .nav a.active {
-  background: #4f8cff;
+  background: #a855f7;
   color: white;
-  box-shadow: 0 0 12px rgba(79,140,255,0.6);
+  box-shadow: 0 0 12px rgba(123, 47, 247, 0.6);
 }
 
 /* Botón "ghost" tipo borde */
@@ -416,4 +416,5 @@ body{
 .factura-total strong {
   color: var(--accent1);
   font-size: 1.4rem;
+
 }
