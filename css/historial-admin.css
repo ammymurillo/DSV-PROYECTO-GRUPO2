@@ -1,3 +1,53 @@
+.site-header {
+    width: 100%;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--glass-strong);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--accent1);
+    cursor: pointer;
+}
+
+.logo-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--accent2);
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 10px var(--accent2);
+}
+
+.nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav a:hover {
+    color: var(--accent1);
+    transform: scale(1.05);
+}
+
+.nav a.active {
+    color: var(--accent2);
+    border-bottom: 2px solid var(--accent2);
+    padding-bottom: 3px;
+}
 
 :root{
     --bg1: #0b0216;
