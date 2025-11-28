@@ -31,30 +31,6 @@ body {
   position: relative;
 }
 
-/* === EFECTO ORBITAS === */
-
-body::before,
-body::after {
-  content: "";
-  position: absolute;
-  width: 900px;
-  height: 900px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(150, 0, 255, 0.25), transparent 70%);
-  filter: blur(120px);
-  z-index: -1;
-}
-
-body::before {
-  top: -200px;
-  left: -200px;
-}
-
-body::after {
-  bottom: -200px;
-  right: -150px;
-}
-
 /* =========================================================
    HEADER
 ========================================================= */
@@ -64,7 +40,7 @@ body::after {
   top: 0;
   width: 100%;
   padding: 18px 60px;
-  background: rgba(10, 0, 25, 0.55);
+  background: #0e0e0e;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(18px);
   display: flex;
@@ -336,9 +312,3 @@ body::after {
   text-decoration: none;
   margin: 0 12px;
 }
-
-/* ========================================================= */
-
-
-
-
