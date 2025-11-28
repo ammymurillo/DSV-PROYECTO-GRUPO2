@@ -98,6 +98,47 @@ body{
   margin-top:10px;
 }
 
+/* --- Estilos para ICONOS DE SERVICIO (Imágenes de Fondo) --- */
+.card .icon {
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 60%; /* Ajusta el tamaño de la imagen */
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* El degradado de fondo glassmorphism se mantiene */
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: inset 0 -6px 18px rgba(0,0,0,0.35);
+}
+
+/* === ICONOS ESPECÍFICOS POR SERVICIO === */
+
+/* Icono para Servicio de Software/Cloud */
+.service-software .icon {
+    /* Aquí va la URL de la imagen de internet para software/cloud */
+    background-image: url('https://www.promaticsoft.com/wp-content/uploads/2024/06/desarrollo-de-software-a-la-medida-1200.jpg'), 
+                      linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+}
+
+/* Icono para Servicio de Hardware/Mantenimiento */
+.service-hardware .icon {
+    /* Aquí va la URL de la imagen de internet para hardware/mantenimiento */
+    background-image: url('https://softwareg.com.au/cdn/shop/articles/911-computer-hardware-maintenance.png?v=1707736023'), 
+                      linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+}
+
+/* Icono para Servicio de Soporte/Seguridad */
+.service-soporte .icon {
+    /* Aquí va la URL de la imagen de internet para soporte/seguridad */
+    background-image: url('https://www.datos101.com/wp-content/uploads/2023/12/seguridad-informatica.png'), 
+                      linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+}
+
 /* single card */
 .card{
   position:relative;
@@ -267,6 +308,7 @@ body{
     padding: 6px 10px;
   }
 }
+
 
 
 
