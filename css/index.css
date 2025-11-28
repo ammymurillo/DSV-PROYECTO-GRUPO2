@@ -103,6 +103,17 @@ input:focus, select:focus{
   background: rgba(255,255,255,0.12);
 }
 
+/* ==== DESPLEGABLE ==== */
+select option {
+    background-color: white;
+    color: black;
+    padding: 5px; 
+}
+
+.form-box select {
+    background-color: var(--glass-strong);
+}
+
 /* ==== BOTÓN PRINCIPAL (IGUAL AL DISEÑO) ==== */
 .btn{
   width:100%;
@@ -155,6 +166,7 @@ input:focus, select:focus{
     margin-bottom:25px;
   }
 }
+
 
 
 
