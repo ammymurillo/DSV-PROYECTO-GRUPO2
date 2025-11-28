@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Cotizaciones - CoreCloud</title>
+    <link rel="stylesheet" href="css/historial-admin.css">
+    <script src="js/historial-admin.js" defer></script>
+</head>
+
+<body>
+
+<header class="site-header small">
+    <div class="logo"><div class="logo-dot"></div><span>CoreCloud</span></div>
+    <nav class="nav">
+        <a href="index-admin.html">Inicio</a>
+        <a href="servicios-admin.html">Servicios</a>
+        <a href="clientes-admin.html">Registrar Cliente</a>
+        <a href="cotizar-admin.html">Cotizar</a>
+        <a href="historial-admin.html" class="active">Historial</a>
+    </nav>
+</header>
+
+<section class="historial-container">
+    <h2>Historial de Cotizaciones</h2>
+
+    <table class="tabla-historial">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>N° Cotización</th>
+                <th>Cliente</th>
+                <th>Subtotal</th>
+                <th>ITBMS</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="listaHistorial"></tbody>
+    </table>
+</section>
+
+</body>
+</html>
