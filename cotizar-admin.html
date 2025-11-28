@@ -1,70 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cotizar Cliente - ADMIN</title>
-  <link rel="stylesheet" href="css/cotizar.css">
-  <script src="js/cotizar.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoreCloud - Cotizar</title>
+    <link rel="stylesheet" href="css/cotizar-user.css">
+    <script src="js/servicios.js" defer></script>
+    <script src="js/cotizar-user.js" defer></script>
 </head>
 
 <body>
-
-  <!-- ================= HEADER ================= -->
-  <header class="site-header">
-    <div class="logo">
-      <span class="logo-dot"></span> CoreCloud
-    </div>
-
+<header class="site-header small">
+    <div class="logo"><div class="logo-dot"></div><span>CoreCloud</span></div>
     <nav class="nav">
-      <a href="inicio_admin.html">Inicio</a>
-      <a href="clientes_admin.html">Clientes</a>
-      <a href="cotizar_admin.html" class="active">Cotizar</a>
-      <a href="facturas_admin.html">Facturas</a>
+        <a href="index-user.html">Inicio</a>
+        <a href="servicios-user.html">Servicios</a>
+        <a href="cotizar-user.html" class="active">Cotizar</a>
     </nav>
-  </header>
+</header>
 
-  <!-- =============== CONTENEDOR PRINCIPAL =============== -->
-  <div class="cotizador-container">
+<section class="cotizador-container">
 
-   <div class="contenedor">
-    
-    <!-- PANEL IZQUIERDO -->
-    <div class="panel panel-izquierdo">
-        <h2>Datos del Cliente</h2>
+    <div class="left-panel">
+        <h2>Crear Cotización</h2>
 
-        <label>Nombre del cliente</label>
-        <input type="text" id="nombreCliente" placeholder="Ej: Juan Pérez">
+        <label>Cliente</label>
+        <input type="text" id="nombreCliente" placeholder="Nombre del cliente">
 
-        <label>Correo</label>
-        <input type="email" id="correo" placeholder="correo@ejemplo.com">
+        <label>Seleccionar servicio</label>
+        <select id="selectServicio"></select>
 
-        <label>Teléfono</label>
-        <input type="text" id="telefono" placeholder="0000-0000">
+        <button id="btnAgregar" class="btn-add">Agregar Servicio</button>
 
         <hr>
 
-        <h2>Agregar Servicio</h2>
-
-        <label>Servicio</label>
-        <select id="servicioSelect">
-            <option value="" disabled selected>Seleccionar servicio...</option>
-        </select>
-
-        <button id="btnAgregar" class="btn-add">Agregar Servicio</button>
         <button id="btnImprimir" class="btn-print">Imprimir Cotización</button>
     </div>
 
-    <!-- PANEL DERECHO -->
-    <div class="panel panel-derecho">
-        <h2>Servicios Agregados</h2>
+    <div class="right-panel">
+        <h3>CoreCloud - Cotización</h3>
 
-        <div class="info">
-            <strong>Cliente:</strong> <span id="clienteNombre">—</span>
-            <span style="float: right;"><strong>Fecha:</strong> <span id="fecha"></span></span>
+        <div class="factura-header">
+            <p><b>N° Cotización:</b> <span id="idCotizacion"></span></p>
+            <p><b>Fecha:</b> <span id="fechaCotizacion"></span></p>
         </div>
 
-        <table id="tablaServicios">
+        <table class="tabla-servicios">
             <thead>
                 <tr>
                     <th>Servicio</th>
@@ -72,24 +53,20 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody id="tablaServicios"></tbody>
         </table>
 
         <div class="totales">
-            <p>Subtotal: <span id="subtotal">$0</span></p>
-            <p>Impuesto (7%): <span id="impuesto">$0</span></p>
-            <p><strong>Total: <span id="total">$0</span></strong></p>
+            <p>Subtotal: <span id="subtotal">$0.00</span></p>
+            <p>ITBMS (7%): <span id="itbms">$0.00</span></p>
+            <h3>Total: <span id="total">$0.00</span></h3>
         </div>
     </div>
-</div>
+
+</section>
+
 </body>
 </html>
-
-
-
-
-
-
 
 
 
