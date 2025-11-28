@@ -206,10 +206,10 @@ body{
 .logo-dot {
   width: 12px;
   height: 12px;
-  background: #4f8cff;
+  background: #7b2ff7;
   border-radius: 50%;
   margin-right: 8px;
-  box-shadow: 0 0 12px #4f8cff;
+  box-shadow: 0 0 12px rgba(123, 47, 247, 0.6);
 }
 
 /* ===== NAV ===== */
@@ -236,9 +236,9 @@ body{
 
 /* Link actual */
 .nav a.active {
-  background: #4f8cff;
+  background: #7b2ff7;
   color: white;
-  box-shadow: 0 0 12px rgba(79,140,255,0.6);
+  box-shadow: 0 8px 24px rgba(123, 47, 247, 0.3);
 }
 
 /* Botón "ghost" tipo borde */
@@ -268,32 +268,7 @@ body{
   }
 }
 
-/* ==== FIX PARA QUITAR EL AZUL DEL MENÚ ==== */
-.nav a {
-  color: #e9d5ff !important; /* Morado pastel */
-  text-decoration: none !important;
-}
 
-.nav a:hover {
-  color: #fff !important;
-  background: rgba(168, 85, 247, 0.20) !important;
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
-}
 
-.nav a.active {
-  background: linear-gradient(90deg, var(--accent1), var(--accent2)) !important;
-  color: #fff !important;
-}
-
-.nav a.ghost {
-  border: 1px solid rgba(168, 85, 247, 0.4) !important;
-  color: #e9d5ff !important;
-}
-
-.nav a.ghost:hover {
-  background: rgba(168, 85, 247, 0.25) !important;
-  color: #fff !important;
-  border-color: rgba(168, 85, 247, 0.55) !important;
-}
 
 
