@@ -211,8 +211,8 @@ hr {
 
 /* DESPLEGABLE */
 select option {
-    background-color: var(--bg2); 
-    color: var(--text); 
+    background-color: white; 
+    color: black; 
     padding: 5px;
 }
 
