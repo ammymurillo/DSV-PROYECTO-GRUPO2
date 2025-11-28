@@ -209,6 +209,13 @@ hr {
     margin: 25px 0;
 }
 
+/* DESPLEGABLE */
+select option {
+    background-color: var(--bg2); 
+    color: var(--text); 
+    padding: 5px;
+}
+
 /* =========================
       BOTONES
 ========================= */
