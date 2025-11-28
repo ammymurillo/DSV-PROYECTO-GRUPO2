@@ -211,3 +211,14 @@ hr {
   font-size: 18px;
   margin-top: 8px;
 }
+#servicioSelect {
+  width: 100%;
+  padding: 10px;
+  background: var(--glass);
+  border: 1px solid var(--glass-strong);
+  color: var(--text);
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+
