@@ -209,7 +209,7 @@ body{
   background: #a855f7
   border-radius: 50%;
   margin-right: 8px;
-  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 12px rgba(123, 47, 247, 0.6);
 }
 
 /* ===== NAV ===== */
@@ -267,6 +267,7 @@ body{
     padding: 6px 10px;
   }
 }
+
 
 
 
