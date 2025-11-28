@@ -47,7 +47,7 @@ body{
 }
 
 .site-header.small {
-    padding: 12px 20px;
+    padding: 12px 1px;
 }
 
 .logo {
@@ -57,7 +57,7 @@ body{
     color: #fff;
     font-weight: 600;
     letter-spacing: 0.5px;
-    padding: 6px 50px;
+    padding: 6px 30px;
 }
 
 .logo-dot {
@@ -65,10 +65,10 @@ body{
     height: 12px;
     /* Mantenemos el color azul para el punto del logo CoreCloud, 
        o podrías usar --accent1 para unificarlos: background: var(--accent1); */
-    background: #4f8cff; 
+    background: #a855f7; 
     border-radius: 50%;
     margin-right: 8px;
-    box-shadow: 0 0 12px #4f8cff;
+    box-shadow: 0 0 12px #a855f7;
 }
 
 .nav {
@@ -95,7 +95,7 @@ body{
     /* Usamos el color de acento principal para el item activo */
     background: var(--accent2);
     color: white;
-    box-shadow: 0 0 12px rgba(124, 58, 237, 0.6); 
+    box-shadow: 0 0 12px #a855f7;
 }
 
 /* --- Media Queries del Header --- */
