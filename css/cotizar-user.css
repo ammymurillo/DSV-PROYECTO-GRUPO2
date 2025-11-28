@@ -415,7 +415,8 @@ button {
     /* El panel de cotización toma un estilo de documento */
     .right-panel {
         box-shadow: none !important;
-        border: 2px solid #333 !important; 
+        border: 1px solid #999 !important;
+        border-radius: 0 !important;
         background: white !important;
         padding: 30px;
         width: 100%;
@@ -424,8 +425,10 @@ button {
 
     .right-panel h3 {
         text-align: center;
-        border-bottom: 3px solid #333 !important;
+        border-bottom: 2px solid #ccc !important;
         color: black !important;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
     }
     
     /* Encabezado de la factura */
@@ -440,7 +443,7 @@ button {
 
     /* Tabla para impresión */
     .tabla-servicios {
-        border: 1px solid #666;
+        border: 1px solid #ccc;
     }
 
     .tabla-servicios thead {
@@ -458,7 +461,7 @@ button {
 
     /* Totales para impresión */
     .totales {
-        border-top: 3px double #333 !important;
+        border-top: 2px double #ccc !important;
     }
     
     .totales h3, .totales p {
