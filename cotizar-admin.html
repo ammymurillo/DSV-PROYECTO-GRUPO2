@@ -20,40 +20,89 @@
   </header>
 
   <main class="container narrow">
-    <h2 class="page-title">Crear Cotización</h2>
 
-    <!-- FORMULARIO PRINCIPAL -->
+    <!-- ===================================================
+         FILTROS DE BÚSQUEDA (PARTE SUPERIOR)
+    ==================================================== -->
+    <h2 class="page-title">Filtros de Cotizaciones</h2>
+
+    <div class="card-form" id="filtrosCotizacion">
+      <div class="filtro-grupo">
+        <label>Filtrar por Cliente</label>
+        <select id="filtroCliente">
+          <option value="">Todos los clientes</option>
+          <!-- Se llenará dinámicamente -->
+        </select>
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Desde</label>
+        <input type="date" id="filtroDesde">
+      </div>
+
+      <div class="filtro-grupo">
+        <label>Hasta</label>
+        <input type="date" id="filtroHasta">
+      </div>
+
+      <button id="btnAplicarFiltros" class="btn-primary">Aplicar Filtros</button>
+    </div>
+
+
+    <!-- ===================================================
+         FORMULARIO PARA CREAR COTIZACIÓN
+    ==================================================== -->
+    <h2 class="page-title mt-40">Crear Cotización</h2>
+
     <form id="formCotizacion" class="card-form">
 
       <label>Nombre del Cliente</label>
       <input type="text" id="clienteInput" placeholder="Ej: Jorge Ramon" required>
 
-      <!-- 🔥 Se elimina el botón Verificar Cliente -->
-      <!-- 🔥 El bloque ahora siempre está visible -->
+      <label>Fecha de Cotización</label>
+      <input type="date" id="fechaCotizacion" required>
 
-      <div id="clienteValido">
+      <label>Servicio</label>
+      <select id="servicioSelect"></select>
 
-        <label>Fecha de Cotización</label>
-        <input type="date" id="fechaCotizacion" required>
+      <label>Cantidad</label>
+      <input id="cantidad" type="number" min="1" value="1">
 
-        <label>Servicio</label>
-        <select id="servicioSelect"></select>
+      <button id="btnAgregar" type="button" class="btn-primary">Agregar Servicio</button>
 
-        <label>Cantidad</label>
-        <input id="cantidad" type="number" min="1" value="1">
+      <!-- Lista dinámica -->
+      <div class="servicios-lista" id="listaServicios"></div>
 
-        <button id="btnAgregar" type="button" class="btn-primary">Agregar Servicio</button>
-
-        <!-- Lista de servicios agregados -->
-        <div class="servicios-lista" id="listaServicios"></div>
-
-        <button type="submit" class="btn-primary">Generar Cotización</button>
-
-      </div>
+      <button type="submit" class="btn-primary">Generar Cotización</button>
     </form>
 
-    <!-- RESULTADO / FACTURA -->
+    <!-- Resultado factura -->
     <div id="resultadoCot" class="cot-result card-form" hidden></div>
+
+
+
+    <!-- ===================================================
+         TABLA DE COTIZACIONES
+    ==================================================== -->
+    <h2 class="page-title mt-40">Listado de Cotizaciones</h2>
+
+    <div class="card-form">
+      <table class="tabla-cotizaciones" id="tablaCotizaciones">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>N° Cotización</th>
+            <th>Cliente</th>
+            <th>Subtotal</th>
+            <th>Impuesto</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llenará con JavaScript -->
+        </tbody>
+      </table>
+    </div>
 
   </main>
 </body>
