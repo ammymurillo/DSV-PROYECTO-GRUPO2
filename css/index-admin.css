@@ -320,5 +320,25 @@ body::after {
   box-shadow: 0 0 35px rgba(180, 90, 255, 0.2);
 }
 
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+  padding: 40px;
+  text-align: center;
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+.site-footer a {
+  color: var(--accent3);
+  text-decoration: none;
+  margin: 0 12px;
+}
+
+/* ========================================================= */
+
+
 
 
