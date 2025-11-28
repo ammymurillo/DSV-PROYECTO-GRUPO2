@@ -1,110 +1,107 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CoreCloud - Cotizar Servicio</title>
-  <link rel="stylesheet" href="css/cotizar.css">
-  <script src="js/cotizar.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cotizar Cliente - ADMIN</title>
+  <link rel="stylesheet" href="cotizar.css">
+  <script src="cotizar_admin.js" defer></script>
 </head>
 
 <body>
-  <header class="site-header small">
-    <div class="logo"><div class="logo-dot"></div><span>CoreCloud</span></div>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-dot"></span> TechFix Admin
+    </div>
+
     <nav class="nav">
-      <a href="index-admin.html">Inicio</a>
-      <a href="servicios-admin.html">Servicios</a>
-      <a href="clientes-admin.html">Registrar Cliente</a>
-      <a href="cotizar-admin.html" class="active">Cotizar</a>
+      <a href="inicio_admin.html">Inicio</a>
+      <a href="clientes_admin.html">Clientes</a>
+      <a href="cotizar_admin.html" class="active">Cotizar</a>
+      <a href="facturas_admin.html">Facturas</a>
     </nav>
   </header>
 
-  <main class="container narrow">
+  <!-- =============== CONTENEDOR PRINCIPAL =============== -->
+  <div class="cotizador-container">
 
-    <!-- ===================================================
-         FILTROS DE BÚSQUEDA (PARTE SUPERIOR)
-    ==================================================== -->
-    <h2 class="page-title">Filtros de Cotizaciones</h2>
+    <!-- =============== PANEL IZQUIERDO (Filtros / Datos Cliente) =============== -->
+    <div class="left-panel">
 
-    <div class="card-form" id="filtrosCotizacion">
-      <div class="filtro-grupo">
-        <label>Filtrar por Cliente</label>
-        <select id="filtroCliente">
-          <option value="">Todos los clientes</option>
-          <!-- Se llenará dinámicamente -->
-        </select>
-      </div>
+      <h2>Datos del Cliente</h2>
 
-      <div class="filtro-grupo">
-        <label>Desde</label>
-        <input type="date" id="filtroDesde">
-      </div>
+      <label for="clienteNombre">Nombre del cliente</label>
+      <input type="text" id="clienteNombre" placeholder="Ej: Juan Pérez">
 
-      <div class="filtro-grupo">
-        <label>Hasta</label>
-        <input type="date" id="filtroHasta">
-      </div>
+      <label for="clienteCorreo">Correo</label>
+      <input type="text" id="clienteCorreo" placeholder="correo@ejemplo.com">
 
-      <button id="btnAplicarFiltros" class="btn-primary">Aplicar Filtros</button>
+      <label for="clienteTelefono">Teléfono</label>
+      <input type="text" id="clienteTelefono" placeholder="0000-0000">
+
+      <hr>
+
+      <h2>Agregar Servicio</h2>
+
+      <label for="servicioNombre">Servicio</label>
+      <input type="text" id="servicioNombre" placeholder="Ej: Reemplazo de pantalla">
+
+      <label for="servicioCategoria">Categoría</label>
+      <select id="servicioCategoria">
+        <option value="" disabled selected>Elegir categoría</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Software">Software</option>
+        <option value="Diagnóstico">Diagnóstico</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      <label for="servicioPrecio">Precio</label>
+      <input type="text" id="servicioPrecio" placeholder="Ej: 45">
+
+      <button class="btn-add" id="btnAgregar">
+        ➕ Agregar Servicio
+      </button>
+
+      <button class="btn-print" id="btnImprimir">
+        🖨 Imprimir Cotización
+      </button>
     </div>
 
+    <!-- =============== PANEL DERECHO (Tabla + Totales) =============== -->
+    <div class="right-panel">
+      <h3>Servicios Agregados</h3>
 
-    <!-- ===================================================
-         FORMULARIO PARA CREAR COTIZACIÓN
-    ==================================================== -->
-    <h2 class="page-title mt-40">Crear Cotización</h2>
+      <div class="factura-header">
+        <div><b>Cliente:</b> <span id="mostrarCliente">—</span></div>
+        <div><b>Fecha:</b> <span id="fechaActual"></span></div>
+      </div>
 
-    <form id="formCotizacion" class="card-form">
-
-      <label>Nombre del Cliente</label>
-      <input type="text" id="clienteInput" placeholder="Ej: Jorge Ramon" required>
-
-      <label>Fecha de Cotización</label>
-      <input type="date" id="fechaCotizacion" required>
-
-      <label>Servicio</label>
-      <select id="servicioSelect"></select>
-
-      <label>Cantidad</label>
-      <input id="cantidad" type="number" min="1" value="1">
-
-      <button id="btnAgregar" type="button" class="btn-primary">Agregar Servicio</button>
-
-      <!-- Lista dinámica -->
-      <div class="servicios-lista" id="listaServicios"></div>
-
-      <button type="submit" class="btn-primary">Generar Cotización</button>
-    </form>
-
-    <!-- Resultado factura -->
-    <div id="resultadoCot" class="cot-result card-form" hidden></div>
-
-
-
-    <!-- ===================================================
-         TABLA DE COTIZACIONES
-    ==================================================== -->
-    <h2 class="page-title mt-40">Listado de Cotizaciones</h2>
-
-    <div class="card-form">
-      <table class="tabla-cotizaciones" id="tablaCotizaciones">
+      <table class="tabla-servicios" id="tablaServicios">
         <thead>
           <tr>
-            <th>Fecha</th>
-            <th>N° Cotización</th>
-            <th>Cliente</th>
-            <th>Subtotal</th>
-            <th>Impuesto</th>
-            <th>Total</th>
+            <th>Servicio</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th></th>
           </tr>
         </thead>
+
         <tbody>
-          <!-- Se llenará con JavaScript -->
+          <!-- Los servicios se agregan aquí dinámicamente -->
         </tbody>
       </table>
-    </div>
 
-  </main>
+      <div class="totales">
+        <p>Subtotal: <span id="subtotal">$0</span></p>
+        <p>Impuesto (7%): <span id="impuesto">$0</span></p>
+        <h3>Total: <span id="total">$0</span></h3>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
 
