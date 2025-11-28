@@ -1,180 +1,213 @@
-/* ============================================
-   PALETA PRINCIPAL (TechFix)
-=============================================== */
-:root{
+/* ========== COLORES BASE ========== */
+:root {
   --bg1: #0b0216;
   --bg2: #2b063f;
+  --panel: rgba(255,255,255,0.06);
+  --panel-strong: rgba(255,255,255,0.12);
   --accent1: #a855f7;
   --accent2: #7c3aed;
-  --glass: rgba(255,255,255,0.06);
-  --glass-strong: rgba(255,255,255,0.12);
   --text: #eef2ff;
-  --radius: 18px;
 }
 
-/* Fondo general */
-body{
-  background: linear-gradient(145deg, var(--bg1), var(--bg2));
-  color: var(--text);
+/* ========== RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
-/* ============================================
-   TARJETAS RECTANGULARES (Filtros, Form, Tabla)
-=============================================== */
-.card-form{
-  background: var(--glass);
-  border: 1px solid rgba(255,255,255,0.15);
-  backdrop-filter: blur(12px);
-  border-radius: var(--radius);
-  padding: 25px 30px;
-  margin: 25px 0;
-  box-shadow: 0 0 12px rgba(168,85,247,0.25);
+body {
+  background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+  min-height: 100vh;
+  color: var(--text);
+  padding-bottom: 40px;
 }
 
-/* Títulos */
-.page-title{
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--accent1);
-  margin-top: 35px;
-}
-
-/* ============================================
-   INPUTS y SELECTS estilo TechFix
-=============================================== */
-.card-form input,
-.card-form select{
+/* ========== HEADER ========== */
+.site-header {
   width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 14px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
+  padding: 18px 40px;
+  background: #0a0114;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.logo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent1);
+  margin-right: 8px;
+}
+
+.nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  font-size: 16px;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--accent1);
+}
+
+/* ========== CONTENEDOR PRINCIPAL ========== */
+.cotizador-container {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  justify-content: center;
+}
+
+/* ========== PANEL IZQUIERDO ========== */
+.left-panel {
+  width: 380px;
+  padding: 30px;
+  background: var(--panel);
+  backdrop-filter: blur(20px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.left-panel h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-size: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  margin-top: 5px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--panel-strong);
   color: var(--text);
   outline: none;
-  font-size: 0.95rem;
-  transition: 0.2s ease-in-out;
+  font-size: 15px;
 }
 
-.card-form input:focus,
-.card-form select:focus{
-  border-color: var(--accent1);
-  box-shadow: 0 0 8px rgba(168,85,247,0.35);
-}
-
-/* Labels */
-.card-form label{
-  font-size: 0.95rem;
-  margin-bottom: 3px;
-  display: block;
-  color: #dcd9ff;
-}
-
-/* ============================================
-   BOTONES
-=============================================== */
-.btn-primary{
-  width: 100%;
-  padding: 12px;
-  background: var(--accent1);
-  border: none;
-  border-radius: 14px;
-  font-weight: bold;
+select option {
+  background: #1a0827;
   color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 0 12px rgba(168,85,247,0.35);
-  transition: 0.25s;
 }
 
-.btn-primary:hover{
-  background: var(--accent2);
-  box-shadow: 0 0 16px rgba(124,58,237,0.6);
+hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  margin: 25px 0;
 }
 
-/* Botón pequeño */
-#btnAgregar{
-  margin-top: 10px;
-}
-
-/* ============================================
-   FILTROS (Tarjeta superior)
-=============================================== */
-#filtrosCotizacion{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  align-items: end;
-}
-
-/* Botón filtros */
-#btnAplicarFiltros{
+/* ========== BOTONES ========== */
+.btn-add,
+.btn-print {
+  width: 100%;
+  margin-top: 18px;
   padding: 14px;
-  margin: 0;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-/* Responsive */
-@media(max-width: 850px){
-  #filtrosCotizacion{
-    grid-template-columns: 1fr;
-  }
+.btn-add {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
 }
 
-/* ============================================
-   TABLA DE COTIZACIONES
-=============================================== */
-.tabla-cotizaciones{
+.btn-add:hover {
+  opacity: 0.85;
+}
+
+.btn-print {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.btn-print:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ========== PANEL DERECHO ========== */
+.right-panel {
+  width: 650px;
+  padding: 30px;
+  background: var(--panel);
+  backdrop-filter: blur(20px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.right-panel h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.factura-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* ========== TABLA ========== */
+.tabla-servicios {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.tabla-cotizaciones th{
+.tabla-servicios thead {
+  background: rgba(255,255,255,0.1);
+}
+
+.tabla-servicios th,
+.tabla-servicios td {
+  padding: 12px;
   text-align: left;
-  padding: 12px;
-  background: var(--glass-strong);
-  color: var(--accent1);
-  font-weight: 600;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
-.tabla-cotizaciones td{
-  padding: 12px;
+.tabla-servicios tbody tr {
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  color: var(--text);
 }
 
-/* Hover filas */
-.tabla-cotizaciones tbody tr:hover{
-  background: rgba(168,85,247,0.15);
-}
-
-/* ============================================
-   LISTA DE SERVICIOS (DISEÑO BONITO)
-=============================================== */
-.servicios-lista{
-  margin-top: 15px;
-  border-top: 1px solid rgba(255,255,255,0.15);
-  padding-top: 15px;
-}
-
-.servicios-lista .item-servicio{
+.tabla-servicios tbody tr:hover {
   background: rgba(255,255,255,0.05);
-  padding: 12px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  border: 1px solid rgba(255,255,255,0.12);
 }
 
-/* ============================================
-   RESULTADO DE COTIZACIÓN
-=============================================== */
-.cot-result{
-  background: rgba(255,255,255,0.08);
-  padding: 25px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.15);
-  margin-top: 20px;
-  box-shadow: 0 0 12px rgba(168,85,247,0.3);
+.tabla-servicios button {
+  background: #ff3366;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ========== TOTALES ========== */
+.totales p,
+.totales h3 {
+  font-size: 18px;
+  margin-top: 8px;
 }
