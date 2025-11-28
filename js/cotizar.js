@@ -120,19 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     totalDOM.innerText = `$${total.toFixed(2)}`;
   }
 
-  // imprimir
-  document.getElementById("btnImprimir").addEventListener("click", () => {
-    // incluir nombre del cliente como título opcional en impresión
-    if(nombreClienteInput && nombreClienteInput.value.trim()) {
-      const prevTitle = document.title;
-      document.title = `Cotización - ${nombreClienteInput.value.trim()}`;
-      window.print();
-      document.title = prevTitle;
-      return;
-    }
-    window.print();
-  });
-//historial
+//imprimir
   document.getElementById("btnImprimir").addEventListener("click", function () {
 
     const fecha = new Date().toLocaleDateString();
@@ -159,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#tablaHistorial tbody").innerHTML += nuevaFila;
 });
 
-  document.getElementById("btnGuardarHistorial").addEventListener("click", () => {
+document.getElementById("btnGuardarHistorial").addEventListener("click", () => {
 
     const fecha = document.getElementById("fechaCotizacion").textContent || "-";
     const numeroCot = document.getElementById("idCotizacion").textContent || "-";
@@ -182,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector("#tablaHistorial tbody").innerHTML += nuevaFila;
 });
-
 });
+
 
 
