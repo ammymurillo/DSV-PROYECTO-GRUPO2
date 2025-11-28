@@ -65,16 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('article');
       card.className = 'card';
       card.innerHTML = `
-        <div class="row">
-          <div class="icon">${iconSVG(s.tipo)}</div>
-          <div style="flex:1">
-            <h3>${s.name}</h3>
-            <div>
-              ${s.old ? `<span class="price-old">$${s.old.toFixed(2)}</span>` : ''}
-              <span class="price">$${s.price.toFixed(2)}</span>
-            </div>
-          </div>
+        <h3>${s.name}</h3>
+        <div>
+          ${s.old ? `<span class="price-old">$${s.old.toFixed(2)}</span>` : ''}
+          <span class="price">$${s.price.toFixed(2)}</span>
         </div>
+    
         <p class="desc">${s.desc}</p>
         <ul class="specs">${s.specs.map(x=>`<li>${x}</li>`).join('')}</ul>
         <button class="btn" data-name="${s.name}" data-price="${s.price}">Seleccionar</button>
@@ -127,4 +123,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 300);
 
 });
+
 
