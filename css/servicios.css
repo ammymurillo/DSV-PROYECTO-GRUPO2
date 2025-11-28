@@ -267,3 +267,33 @@ body{
     padding: 6px 10px;
   }
 }
+
+/* ==== FIX PARA QUITAR EL AZUL DEL MENÚ ==== */
+.nav a {
+  color: #e9d5ff !important; /* Morado pastel */
+  text-decoration: none !important;
+}
+
+.nav a:hover {
+  color: #fff !important;
+  background: rgba(168, 85, 247, 0.20) !important;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+}
+
+.nav a.active {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2)) !important;
+  color: #fff !important;
+}
+
+.nav a.ghost {
+  border: 1px solid rgba(168, 85, 247, 0.4) !important;
+  color: #e9d5ff !important;
+}
+
+.nav a.ghost:hover {
+  background: rgba(168, 85, 247, 0.25) !important;
+  color: #fff !important;
+  border-color: rgba(168, 85, 247, 0.55) !important;
+}
+
+
