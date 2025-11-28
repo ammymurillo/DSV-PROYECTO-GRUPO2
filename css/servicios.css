@@ -206,7 +206,7 @@ body{
 .logo-dot {
   width: 12px;
   height: 12px;
-  background: #a855f7
+  background: #a855f7;
   border-radius: 50%;
   margin-right: 8px;
   box-shadow: 0 0 12px rgba(123, 47, 247, 0.6);
@@ -267,6 +267,7 @@ body{
     padding: 6px 10px;
   }
 }
+
 
 
 
