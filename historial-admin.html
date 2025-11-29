@@ -35,60 +35,20 @@
     </table>
 
     <section class="historial-container">
-    <h2>Historial de Cotizaciones</h2>
-
-    <!-- Filtros -->
-    <div class="filtros">
-        <input type="text" id="buscarCliente" placeholder="Buscar por cliente">
-        <input type="date" id="fechaDesde">
-        <input type="date" id="fechaHasta">
-        <button id="btnFiltrar">Filtrar</button>
-        <button id="btnLimpiar">Limpiar</button>
-    </div>
-
-    <table class="tabla-historial">
-        <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>N° Cotización</th>
-                <th>Cliente</th>
-                <th>Subtotal</th>
-                <th>ITBMS</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody id="listaHistorial"></tbody>
-    </table>
-</section>
+    <h2>Filtros </h2>
+        
+   <!-- Filtros -->
+<div class="filtros">
+    <input type="text" id="buscarCliente" placeholder="Buscar por cliente">
+    <input type="date" id="fechaDesde">
+    <input type="date" id="fechaHasta">
+    <button id="btnFiltrar">Filtrar</button>
+    <button id="btnLimpiar">Limpiar</button>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const listaHistorial = document.getElementById('listaHistorial');
-
-    // Ejemplo de datos (reemplazar con tus datos reales)
-    const cotizaciones = [
-        { fecha: '2025-11-01', numero: 1, cliente: 'Juan Perez', subtotal: 100, itbms: 7, total: 107 },
-        { fecha: '2025-11-05', numero: 2, cliente: 'Maria Gomez', subtotal: 200, itbms: 14, total: 214 },
-        { fecha: '2025-11-10', numero: 3, cliente: 'Luis Torres', subtotal: 150, itbms: 10.5, total: 160.5 }
-    ];
-
-    function mostrarHistorial(datos) {
-        listaHistorial.innerHTML = '';
-        datos.forEach(c => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${c.fecha}</td>
-                <td>${c.numero}</td>
-                <td>${c.cliente}</td>
-                <td>${c.subtotal.toFixed(2)}</td>
-                <td>${c.itbms.toFixed(2)}</td>
-                <td>${c.total.toFixed(2)}</td>
-            `;
-            listaHistorial.appendChild(row);
-        });
-    }
-
-    mostrarHistorial(cotizaciones);
 
     const buscarCliente = document.getElementById('buscarCliente');
     const fechaDesde = document.getElementById('fechaDesde');
@@ -96,37 +56,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFiltrar = document.getElementById('btnFiltrar');
     const btnLimpiar = document.getElementById('btnLimpiar');
 
-    btnFiltrar.addEventListener('click', () => {
-        let filtered = cotizaciones;
+    // Guardamos todas las filas originales
+    const filasOriginales = Array.from(listaHistorial.querySelectorAll('tr'));
 
-        const cliente = buscarCliente.value.toLowerCase();
+    function filtrarTabla() {
+        const clienteFiltro = buscarCliente.value.toLowerCase();
         const desde = fechaDesde.value;
         const hasta = fechaHasta.value;
 
-        if (cliente) {
-            filtered = filtered.filter(c => c.cliente.toLowerCase().includes(cliente));
-        }
+        filasOriginales.forEach(fila => {
+            const celdas = fila.querySelectorAll('td');
+            const fecha = celdas[0].textContent.trim();
+            const cliente = celdas[2].textContent.trim().toLowerCase();
 
-        if (desde) {
-            filtered = filtered.filter(c => c.fecha >= desde);
-        }
+            let mostrar = true;
 
-        if (hasta) {
-            filtered = filtered.filter(c => c.fecha <= hasta);
-        }
+            if (clienteFiltro && !cliente.includes(clienteFiltro)) {
+                mostrar = false;
+            }
 
-        mostrarHistorial(filtered);
-    });
+            if (desde && fecha < desde) {
+                mostrar = false;
+            }
+
+            if (hasta && fecha > hasta) {
+                mostrar = false;
+            }
+
+            fila.style.display = mostrar ? '' : 'none';
+        });
+    }
+
+    btnFiltrar.addEventListener('click', filtrarTabla);
 
     btnLimpiar.addEventListener('click', () => {
         buscarCliente.value = '';
         fechaDesde.value = '';
         fechaHasta.value = '';
-        mostrarHistorial(cotizaciones);
+        filasOriginales.forEach(fila => fila.style.display = '');
     });
 });
-</script>
-</section>
-
+    </script>
 </body>
 </html>
