@@ -26,4 +26,46 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         tabla.innerHTML += fila;
     });
+//filtro
+    document.addEventListener('DOMContentLoaded', () => {
+    const listaHistorial = document.getElementById('listaHistorial');
+
+    const buscarCliente = document.getElementById('buscarCliente');
+    const fechaDesde = document.getElementById('fechaDesde');
+    const fechaHasta = document.getElementById('fechaHasta');
+    const btnFiltrar = document.getElementById('btnFiltrar');
+    const btnLimpiar = document.getElementById('btnLimpiar');
+
+    // Guardamos todas las filas originales
+    const filasOriginales = Array.from(listaHistorial.querySelectorAll('tr'));
+
+    function filtrarTabla() {
+        const clienteFiltro = buscarCliente.value.toLowerCase();
+        const desde = fechaDesde.value;
+        const hasta = fechaHasta.value;
+
+        filasOriginales.forEach(fila => {
+            const celdas = fila.querySelectorAll('td');
+            const fecha = celdas[0].textContent.trim();
+            const cliente = celdas[2].textContent.trim().toLowerCase();
+
+            let mostrar = true;
+
+            if (clienteFiltro && !cliente.includes(clienteFiltro)) mostrar = false;
+            if (desde && fecha < desde) mostrar = false;
+            if (hasta && fecha > hasta) mostrar = false;
+
+            fila.style.display = mostrar ? '' : 'none';
+        });
+    }
+
+    btnFiltrar.addEventListener('click', filtrarTabla);
+
+    btnLimpiar.addEventListener('click', () => {
+        buscarCliente.value = '';
+        fechaDesde.value = '';
+        fechaHasta.value = '';
+        filasOriginales.forEach(fila => fila.style.display = '');
+    });
+});
 });
